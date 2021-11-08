@@ -1,6 +1,6 @@
 const express = require("express");
 const passport = require("passport");
-const { signup, signin } = require("./controllers");
+const { signup, signin } = require("./user.controllers");
 
 const router = express.Router();
 
