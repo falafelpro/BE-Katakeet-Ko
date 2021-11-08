@@ -27,3 +27,8 @@ exports.signup = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.signin = async (req, res, next) => {
+  const token = await createToken(req.user);
+  res.json({ token });
+};
