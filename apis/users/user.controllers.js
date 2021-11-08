@@ -20,7 +20,7 @@ exports.signup = async (req, res, next) => {
 
     const newUser = await User.create(req.body);
 
-    createToken(newUser);
+    const token = createToken(newUser);
 
     res.status(201).json({ token });
   } catch (error) {
