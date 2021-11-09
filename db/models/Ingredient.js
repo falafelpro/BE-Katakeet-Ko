@@ -6,6 +6,7 @@ const IngredientSchema = mongoose.Schema({
   description: {
     type: String,
   },
+  // YA Salam! LOVE IT! Bas i think they should be split into 2 schemas? Ingredient and Portion
   portion: {
     type: String,
     unit: {

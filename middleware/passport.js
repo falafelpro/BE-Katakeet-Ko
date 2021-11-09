@@ -13,6 +13,8 @@ exports.localStrategy = new LocalStrategy(async (username, password, done) => {
       ? await bcrypt.compare(password, user.password)
       : false;
 
+    // REVIEW: You can also say:
+    //  return done(null, correctPassword ? user : false);
     correctPassword ? done(null, user) : done(null, false);
   } catch (error) {
     done(error);
@@ -25,6 +27,7 @@ exports.jwtStrategy = new JWTStrategy(
     secretOrKey: JWT_SECRET,
   },
   async (payload, done) => {
+    // REVIEW: You need a return here for the done, else it will enter into the try catch
     Date.now() / 1000 > payload.exp ? done(null, false) : false;
     try {
       const user = await User.findById(payload._id);

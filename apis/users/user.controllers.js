@@ -14,6 +14,7 @@ const createToken = (user) => {
 
 exports.signup = async (req, res, next) => {
   try {
+    // REVIEW: saltRounds not saltrounds (camelCase)
     const saltrounds = 10;
     const hashedPass = await bcrypt.hash(req.body.password, saltrounds);
     req.body.password = hashedPass;

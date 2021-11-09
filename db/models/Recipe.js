@@ -12,13 +12,14 @@ const RecipeSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  // REVIEW: So the recipe has one ingredient only?
   ingredient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Ingredient",
-    },
-  
+  },
 });
 
+// REVIEW: You're using this plugin, but where is your slug field?
 RecipeSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
 module.exports = mongoose.model("Recipe", RecipeSchema);

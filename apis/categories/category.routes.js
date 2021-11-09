@@ -10,6 +10,7 @@ const {
 
 // Param Middleware
 router.param("categoryId", async (req, res, next, categoryId) => {
+  // REVIEW: fetchCategories will fetch ALL categories. Is that what we want here?
   const category = await fetchCategories(categoryId, next);
   if (category) {
     req.category = category;
