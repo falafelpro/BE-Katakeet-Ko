@@ -1,5 +1,7 @@
 const express = require("express");
 const passport = require("passport");
+const upload = require("../../middleware/multer");
+
 const router = express.Router();
 const {
   fetchCategories,
@@ -22,6 +24,7 @@ router.get("/", fetchCategories);
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   categoryCreate
 );
 router.post("/:categoryId/recipes", recipeCreate);

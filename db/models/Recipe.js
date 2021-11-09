@@ -12,11 +12,12 @@ const RecipeSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  ingredient: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Ingredient",
+  ingredients: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Ingredient",
     },
-  
+  ],
 });
 
 RecipeSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });

@@ -13,7 +13,16 @@ exports.fetchCategories = async (req, res) => {
 //dont forget to add  fetchCat by ID for param middleware
 exports.categoryCreate = async (req, res, next) => {
   try {
+    if (req.file) {
+      req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
+    }
     const newCategory = await Category.create(req.body);
+    return res.status(201).json(newCategory);
+  } catch (error) {
+    next(error);
+  }
+
+  try {
     return res.status(201).json(newCategory);
   } catch (error) {
     next(error);

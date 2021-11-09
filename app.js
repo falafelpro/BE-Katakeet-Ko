@@ -27,7 +27,7 @@ passport.use(jwtStrategy);
 app.use(cors());
 
 // Routes
-app.use("/media", express.static(path.join(__dirname, "media")));
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use("/apis/kk", userRoutes);
 app.use("/apis/categories", categoriesRoutes);
 app.use("/apis/ingredients", ingredientsRoutes);
