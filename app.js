@@ -6,10 +6,10 @@ const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const path = require("path");
 const passport = require("passport");
-const userRoutes = require("./apis/users/user.routes");
-const categoriesRoutes = require("./apis/categories/category.routes");
-const ingredientsRoutes = require("./apis/ingredients/ingredient.routes");
-const recipesRoutes = require("./apis/recipes/recipe.routes");
+const userRoutes = require("./api/users/user.routes");
+const categoriesRoutes = require("./api/categories/category.routes");
+const ingredientsRoutes = require("./api/ingredients/ingredient.routes");
+const recipesRoutes = require("./api/recipes/recipe.routes");
 
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
@@ -28,14 +28,14 @@ app.use(cors());
 
 // Routes
 app.use("/media", express.static(path.join(__dirname, "media")));
-app.use("/apis/kk", userRoutes);
-app.use("/apis/categories", categoriesRoutes);
-app.use("/apis/ingredients", ingredientsRoutes);
-app.use("/apis/recipes", recipesRoutes);
+app.use("/api", userRoutes);
+app.use("/api/categories", categoriesRoutes);
+app.use("/api/ingredients", ingredientsRoutes);
+app.use("/api/recipes", recipesRoutes);
 
-app.use((req, res, next) => {
-  res.status(404).json({ message: "Path not found" });
-});
+app.use((req, res, next) =>
+  res.status(404).json({ message: "Path not found" })
+);
 
 app.use(errorHandler);
 

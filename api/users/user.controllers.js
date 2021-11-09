@@ -14,8 +14,8 @@ const createToken = (user) => {
 
 exports.signup = async (req, res, next) => {
   try {
-    const saltrounds = 10;
-    const hashedPass = await bcrypt.hash(req.body.password, saltrounds);
+    const saltRounds = 10;
+    const hashedPass = await bcrypt.hash(req.body.password, saltRounds);
     req.body.password = hashedPass;
 
     const newUser = await User.create(req.body);
