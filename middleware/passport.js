@@ -25,7 +25,7 @@ exports.jwtStrategy = new JWTStrategy(
     secretOrKey: JWT_SECRET,
   },
   async (payload, done) => {
-    Date.now() > payload.exp ? done(null, false) : false;
+    Date.now() / 1000 > payload.exp ? done(null, false) : false;
     try {
       const user = await User.findById(payload._id);
       return done(null, user);

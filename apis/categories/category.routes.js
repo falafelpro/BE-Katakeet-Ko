@@ -1,4 +1,6 @@
 const express = require("express");
+const { session } = require("passport");
+const passport = require("passport");
 const router = express.Router();
 const {
   fetchCategories,
@@ -8,7 +10,7 @@ const {
 
 // Param Middleware
 router.param("categoryId", async (req, res, next, categoryId) => {
-  const cate = await fetchCategories(categoryId, next);
+  const category = await fetchCategories(categoryId, next);
   if (category) {
     req.category = category;
     next();
@@ -18,7 +20,11 @@ router.param("categoryId", async (req, res, next, categoryId) => {
 });
 
 router.get("/", fetchCategories);
-router.post("/", categoryCreate);
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  categoryCreate
+);
 router.post("/:categoryId/recipes", recipeCreate);
 
 module.exports = router;
