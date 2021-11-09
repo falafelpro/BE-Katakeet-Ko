@@ -8,6 +8,7 @@ const path = require("path");
 const passport = require("passport");
 const userRoutes = require("./apis/users/user.routes");
 const categoriesRoutes = require("./apis/categories/category.routes");
+
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
 const app = express();
