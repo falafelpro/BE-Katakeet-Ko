@@ -1,15 +1,15 @@
 const Ingredient = require("../../db/models/Ingredient");
 
-exports.fetchCategories = async (req, res) => {
+exports.fetchIngredients = async (req, res) => {
   try {
-    const categories = await Ingredient.find();
-    return res.json(categories);
+    const ingredients = await Ingredient.find();
+    return res.json(ingredients);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
 
-exports.categoryCreate = async (req, res, next) => {
+exports.ingredientCreate = async (req, res, next) => {
   try {
     const newIngredient = await Ingredient.create(req.body);
     return res.status(201).json(newIngredient);
