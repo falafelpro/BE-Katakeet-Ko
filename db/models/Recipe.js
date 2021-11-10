@@ -7,8 +7,9 @@ const RecipeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    image: { type: String },
-    //description: String,
+    image: String,
+    description: String,
+
     slug: { type: String },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
