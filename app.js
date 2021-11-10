@@ -30,12 +30,12 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use("/api", userRoutes);
 app.use("/api/categories", categoriesRoutes);
-app.use("/api/ingredients", ingredientsRoutes);
 app.use("/api/recipes", recipesRoutes);
+app.use("/api/ingredients", ingredientsRoutes);
 
-app.use((req, res, next) => {
-  res.status(404).json({ message: "Path not found" });
-});
+app.use((req, res, next) =>
+  res.status(404).json({ message: "Path not found" })
+);
 
 app.use(errorHandler);
 
