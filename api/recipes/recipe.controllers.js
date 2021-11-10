@@ -11,6 +11,9 @@ exports.fetchRecipes = async (req, res) => {
 
 exports.recipeCreate = async (req, res, next) => {
   try {
+    if (req.file) {
+      req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
+    }
     const newRecipe = await Recipe.create(req.body);
     return res.status(201).json(newRecipe);
   } catch (error) {
