@@ -7,7 +7,7 @@ const RecipeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    image: { type: String },
+    image: String,
     description: String,
     slug: { type: String },
     owner: {
