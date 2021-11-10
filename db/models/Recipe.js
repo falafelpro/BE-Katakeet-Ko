@@ -9,6 +9,7 @@ const RecipeSchema = mongoose.Schema(
     },
     image: String,
     description: String,
+
     slug: { type: String },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
