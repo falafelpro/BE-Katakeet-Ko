@@ -18,7 +18,8 @@ router.param("recipeId", async (req, res, next, recipeId) => {
 router.get("/", fetchRecipes);
 router.post(
   "/",
-  passport.authenticate("jwt", upload.single("image"), { session: false }),
+  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   recipeCreate
 );
 
