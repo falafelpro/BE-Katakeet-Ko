@@ -32,6 +32,7 @@ exports.categoryCreate = async (req, res, next) => {
 exports.recipeCreate = async (req, res, next) => {
   try {
     const categoryId = req.params.categoryId;
+    // REVIEW: why not just say req.body.category = categoryId?
     req.body = { ...req.body, category: categoryId };
     const newRecipe = await Recipe.create(req.body);
     await Category.findOneAndUpdate(
