@@ -7,10 +7,9 @@ const RecipeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    image: String,
+    image: { type: String },
     description: String,
-
-    slug: { type: String },
+    slug: String,
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

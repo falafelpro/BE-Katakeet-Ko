@@ -22,11 +22,11 @@ exports.categoryCreate = async (req, res, next) => {
     next(error);
   }
 
-  try {
-    return res.status(201).json(newCategory);
-  } catch (error) {
-    next(error);
-  }
+  // try {
+  //   return res.status(201).json(newCategory);
+  // } catch (error) {
+  //   next(error);
+  // }
 };
 
 exports.recipeCreate = async (req, res, next) => {

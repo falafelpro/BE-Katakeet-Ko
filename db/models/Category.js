@@ -9,8 +9,7 @@ const CategorySchema = mongoose.Schema({
   },
   slug: String,
   image: { type: String },
-  //description: String,
-  recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipes" }],
+  recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipe" }],
 });
 
 CategorySchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
